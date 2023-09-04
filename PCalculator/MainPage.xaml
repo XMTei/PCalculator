@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:drawable="clr-namespace:PCalculator"
              x:Class="PCalculator.MainPage">
-
+    <ContentPage.Resources>
+        <drawable:GraphicsDrawable x:Key="drawable" />
+    </ContentPage.Resources>
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
@@ -35,6 +38,29 @@
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />
             <Editor AutoSize="Disabled"  Text="111" />
+            <ScrollView Orientation="Horizontal">
+                <HorizontalStackLayout Spacing="10" Padding="0" VerticalOptions="Center" HorizontalOptions="End">
+                    <Entry HorizontalOptions="Fill" MaxLength="4"></Entry>
+                    <Entry HorizontalOptions="Fill"></Entry>
+                    <Entry HorizontalOptions="Fill"></Entry>
+                </HorizontalStackLayout>
+            </ScrollView>
+            <Border Stroke="#C49B33"
+        StrokeThickness="4"
+        Background="#2B0B98"
+        Padding="16,8"
+        HorizontalOptions="Center">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="40,0,0,40" />
+                </Border.StrokeShape>
+                <Entry Text=".NET MAUI"
+           TextColor="White"
+           FontSize="18"
+           FontAttributes="Bold" />
+            </Border>
+            <GraphicsView Drawable="{StaticResource drawable}"
+                      HeightRequest="300"
+                      WidthRequest="400" />
         </VerticalStackLayout>
     </ScrollView>
 
