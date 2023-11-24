@@ -2,9 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:drawable="clr-namespace:PCalculator"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="PCalculator.MainPage">
     <ContentPage.Resources>
         <drawable:GraphicsDrawable x:Key="drawable" />
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+        </Style>
     </ContentPage.Resources>
     <ScrollView>
         <VerticalStackLayout
@@ -38,30 +45,41 @@
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />
             <Editor AutoSize="Disabled"  Text="111" />
-            <ScrollView Orientation="Horizontal">
+            <!--<ScrollView Orientation="Horizontal">
                 <HorizontalStackLayout Spacing="10" Padding="0" VerticalOptions="Center" HorizontalOptions="End">
                     <Entry HorizontalOptions="Fill" MaxLength="4"></Entry>
                     <Entry HorizontalOptions="Fill"></Entry>
                     <Entry HorizontalOptions="Fill"></Entry>
                 </HorizontalStackLayout>
-            </ScrollView>
-            <Border Stroke="#C49B33"
-        StrokeThickness="4"
-        Background="#2B0B98"
-        Padding="16,8"
-        HorizontalOptions="Center">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="40,0,0,40" />
-                </Border.StrokeShape>
-                <Entry Text=".NET MAUI"
-           TextColor="White"
-           FontSize="18"
-           FontAttributes="Bold" />
-            </Border>
-            <GraphicsView Drawable="{StaticResource drawable}"
+            </ScrollView>-->
+            <!--<Border Stroke="#C49B33"
+                StrokeThickness="4"
+                Background="#2B0B98"
+                Padding="16,8"
+                HorizontalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="40,0,0,40" />
+                        </Border.StrokeShape>
+                        <Entry Text=".NET MAUI"
+                   TextColor="White"
+                   FontSize="18"
+                    FontAttributes="Bold" />
+            </Border>-->
+            <!--<GraphicsView Drawable="{StaticResource drawable}"
                       HeightRequest="300"
-                      WidthRequest="400" />
-        </VerticalStackLayout>
+                      WidthRequest="400" />-->
+            <Entry Keyboard="Numeric">
+                <Entry.Behaviors>
+                    <toolkit:NumericValidationBehavior 
+                    InvalidStyle="{StaticResource InvalidEntryStyle}"
+                    ValidStyle="{StaticResource ValidEntryStyle}"
+                    Flags="ValidateOnValueChanged"
+                    MinimumValue="1.0"
+                    MaximumValue="100.0"
+                    MaximumDecimalPlaces="10" />
+                </Entry.Behaviors>
+            </Entry>
+       </VerticalStackLayout>
     </ScrollView>
 
 </ContentPage>

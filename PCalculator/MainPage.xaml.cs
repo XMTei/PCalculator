@@ -1,4 +1,5 @@
-﻿namespace PCalculator
+﻿//using CommunityToolkit.Maui.Markup;
+namespace PCalculator
 {
     public partial class MainPage : ContentPage
     {
